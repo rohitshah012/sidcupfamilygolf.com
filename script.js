@@ -1,11 +1,10 @@
 gsap.to("#nav", {
   backgroundColor: "black",
   height: "80px",
-  duration: "0.5",
+  duration: 0.5,
   scrollTrigger: {
     trigger: "#nav",
     scroller: "body",
-    // markers:true,
     start: "top -10%",
     end: "top -11%",
     scrub: 1,
@@ -14,123 +13,126 @@ gsap.to("#nav", {
 
 gsap.to("#main", {
   backgroundColor: "#000",
-
   scrollTrigger: {
     trigger: "#main",
     scroller: "body",
-
     start: "top -25%",
     end: "top -75%",
     scrub: 2,
   },
 });
 
-var crsr = document.querySelector(".cursor");
-var crsrBlur = document.querySelector(".cursorBlur");
-document.addEventListener("mousemove", function (dets) {
-  crsr.style.left = dets.x + "px";
-  crsr.style.top = dets.y + "px";
-  crsrBlur.style.left = dets.x - 150 + "px";
-  crsrBlur.style.top = dets.y - 150+ "px";
-});
+const nav = document.querySelector("#nav");
+const menuButton = document.querySelector("#menu-btn");
+const navItems = document.querySelectorAll("#nav h4");
+const arrowButton = document.getElementById("arrow");
+const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
 
-
-var h4all = document.querySelectorAll("#nav h4");
-h4all.forEach(function (elem) {
-  elem.addEventListener("mouseenter", function () {
-    crsr.style.scale = 3;
-    crsr.style.border = "1px solid #fff";
-    crsr.style.backgroundColor = "transparent";
-    crsr.style.cursor ="pointer";
+if (menuButton) {
+  menuButton.addEventListener("click", function () {
+    const isOpen = nav.classList.toggle("open");
+    menuButton.setAttribute("aria-expanded", String(isOpen));
   });
-  elem.addEventListener("mouseleave", function () {
-    crsr.style.scale = 1;
-    crsr.style.border = "0px solid #95C11E";
-    crsr.style.backgroundColor = "#95C11E";
+}
+
+if (!isTouchDevice) {
+  const cursor = document.querySelector(".cursor");
+  const cursorBlur = document.querySelector(".cursorBlur");
+
+  document.addEventListener("mousemove", function (event) {
+    cursor.style.left = event.x + "px";
+    cursor.style.top = event.y + "px";
+    cursorBlur.style.left = event.x - 150 + "px";
+    cursorBlur.style.top = event.y - 150 + "px";
+  });
+
+  navItems.forEach(function (item) {
+    item.addEventListener("mouseenter", function () {
+      cursor.style.scale = 3;
+      cursor.style.border = "1px solid #fff";
+      cursor.style.backgroundColor = "transparent";
+    });
+
+    item.addEventListener("mouseleave", function () {
+      cursor.style.scale = 1;
+      cursor.style.border = "0 solid #95C11E";
+      cursor.style.backgroundColor = "#95C11E";
+    });
+  });
+}
+
+navItems.forEach(function (item) {
+  item.addEventListener("click", function () {
+    nav.classList.remove("open");
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", "false");
+    }
   });
 });
 
 gsap.from(".aboutUs img, .aboutus-in", {
   y: 90,
   opacity: 0,
-  duration: 3,
+  duration: 1.2,
   scrollTrigger: {
     trigger: ".aboutUs",
     scroller: "body",
-    // markers:true,
     start: "top 70%",
-    end: "top 65%",
+    end: "top 60%",
     scrub: 1,
   },
 });
 
 gsap.from(".card", {
-  scale: 0.8,
-  // opacity:0,
+  scale: 0.85,
   duration: 0.5,
   stagger: 0.1,
   scrollTrigger: {
-    trigger: ".card",
+    trigger: ".cards-container",
     scroller: "body",
-    // markers:false,
-    start: "top 90%",
-    end: "top 85%",
+    start: "top 85%",
+    end: "top 65%",
     scrub: 1,
   },
 });
-
 
 gsap.from("#colon1", {
   y: -70,
   x: -70,
   scrollTrigger: {
-    trigger: "#colon1",
+    trigger: "#page3",
     scroller: "body",
-    // markers:true,
-    start: "top 55%",
+    start: "top 65%",
     end: "top 45%",
     scrub: 4,
   },
 });
-
 
 gsap.from("#colon2", {
   y: 70,
   x: 70,
   scrollTrigger: {
-    trigger: "#colon1",
+    trigger: "#page3",
     scroller: "body",
-    // markers:true,
-    start: "top 55%",
+    start: "top 65%",
     end: "top 45%",
     scrub: 4,
   },
 });
 
-document.getElementById("arrow").addEventListener("click", function () {
-  document.querySelector("#page3").scrollIntoView({ behavior: "smooth" });
-});
-
-// gsap.from("#page4 h1", {
-//   y:60,
-//   scrollTrigger:{
-//     trigger:"#page4 h1",
-//     scroller:"body",
-//     start: "top 75%",
-//     end:"top 80%",
-
-//   }
-// });
+if (arrowButton) {
+  arrowButton.addEventListener("click", function () {
+    document.querySelector(".page2").scrollIntoView({ behavior: "smooth" });
+  });
+}
 
 gsap.from("#page4 h1", {
   y: 50,
   scrollTrigger: {
     trigger: "#page4 h1",
     scroller: "body",
-    // markers:true,
     start: "top 75%",
-    end: "top 70%",
+    end: "top 65%",
     scrub: 3,
   },
 });
-
