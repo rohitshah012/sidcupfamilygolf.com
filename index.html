@@ -73,18 +73,18 @@
       <i class="ri-menu-3-line"></i>
     </button>
     <div id="nav-links">
-      <h4>Toptracer Range</h4>
-      <h4>Golf Lessons</h4>
-      <h4>Adventure Golf</h4>
-      <h4>Coffee Shop</h4>
-      <h4>Leagues</h4>
+      <a class="nav-link" href="#card1">Toptracer Range</a>
+      <a class="nav-link" href="#card3">Golf Lessons</a>
+      <a class="nav-link" href="#card2">Adventure Golf</a>
+      <a class="nav-link" href="#footer">Coffee Shop</a>
+      <a class="nav-link" href="#footer">Leagues</a>
     </div>
   </div>
 
   <video autoplay loop muted playsinline src="assets/hero.mp4"></video>
 
-  <div class="cursor"></div>
-  <div class="cursorBlur"></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursorBlur" aria-hidden="true"></div>
 
   <div id="main">
     <section id="page1">
@@ -96,13 +96,31 @@
         South East London. Passionate about technology, player development and
         making golf fun and accessible to everyone.
       </p>
+      <div class="hero-actions">
+        <a class="hero-btn hero-btn-primary" href="#card1">Explore Activities</a>
+        <a class="hero-btn hero-btn-secondary" href="#green-div">See Offers</a>
+      </div>
+      <div class="hero-stats" aria-label="Venue highlights">
+        <div class="stat-pill">
+          <strong>46</strong>
+          <span>Range Bays</span>
+        </div>
+        <div class="stat-pill">
+          <strong>2</strong>
+          <span>Adventure Courses</span>
+        </div>
+        <div class="stat-pill">
+          <strong>9 PM</strong>
+          <span>Last Balls</span>
+        </div>
+      </div>
 
       <button id="arrow" aria-label="Scroll to the next section">
         <i class="ri-arrow-down-line"></i>
       </button>
     </section>
 
-    <section class="page2">
+    <section class="page2" id="page2">
       <div class="scroller">
         <div class="scroller-1">
           <h4>Toptracer Range</h4>
@@ -196,9 +214,13 @@
           src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/dots-side.svg"
           alt=""
         />
-        <h4>
-          SIGN UP FOR SIDCUP NEWS AND SPECIAL OFFERS STRAIGHT TO YOUR INBOX
-        </h4>
+        <div class="green-copy">
+          <p class="green-kicker">Stay in the loop</p>
+          <h4>
+            SIGN UP FOR SIDCUP NEWS AND SPECIAL OFFERS STRAIGHT TO YOUR INBOX
+          </h4>
+          <a class="green-cta" href="#footer">Get Venue Details</a>
+        </div>
         <img
           src="https://eiwgew27fhz.exactdn.com/wp-content/themes/puttosaurus/img/dots-side.svg"
           alt=""
